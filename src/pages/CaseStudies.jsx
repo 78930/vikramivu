@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CaseStudies.css';
+import CaseStudiesGrid from '../components/CaseStudiesGrid';
 
 function CaseStudies() {
   const [cases, setCases] = useState([]);
@@ -110,47 +111,7 @@ function CaseStudies() {
         {loading ? (
           <p className="loading">Loading case studies...</p>
         ) : (
-          <div className="cases-grid">
-            {filteredCases.map(caseStudy => (
-              <div key={caseStudy._id} className="case-card">
-                <div className="case-header">
-                  <span className="service-tag">{caseStudy.service}</span>
-                  <h3>{caseStudy.title}</h3>
-                  <p className="client">Client: {caseStudy.client}</p>
-                </div>
-
-                <div className="case-content">
-                  <div className="case-item">
-                    <strong>Challenge:</strong>
-                    <p>{caseStudy.challenge}</p>
-                  </div>
-                  <div className="case-item">
-                    <strong>Solution:</strong>
-                    <p>{caseStudy.solution}</p>
-                  </div>
-                  <div className="case-item">
-                    <strong>Results:</strong>
-                    <p>{caseStudy.results}</p>
-                  </div>
-                </div>
-
-                <div className="case-metrics">
-                  <div className="metric">
-                    <strong>{caseStudy.metrics.improvement}</strong>
-                    <span>Improvement</span>
-                  </div>
-                  <div className="metric">
-                    <strong>{caseStudy.metrics.roi}</strong>
-                    <span>ROI</span>
-                  </div>
-                  <div className="metric">
-                    <strong>{caseStudy.metrics.timeframe}</strong>
-                    <span>Timeframe</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <CaseStudiesGrid />
         )}
       </div>
     </div>

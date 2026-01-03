@@ -179,7 +179,7 @@ function Contact() {
         <div className="contact-info-section">
           <div className="info-card">
             <h3>📧 Email</h3>
-            <p>info@vikramivu.com</p>
+            <p>info@yotira.com</p>
           </div>
           <div className="info-card">
             <h3>📞 Phone</h3>

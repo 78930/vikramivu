@@ -8,6 +8,7 @@ import CaseStudies from './pages/CaseStudies';
 import ITConsulting from './pages/ITConsulting';
 import ITServices from './pages/IT services';
 import RCMServices from './pages/RCMServices';
+import RCMDetails from './pages/RCMDetails';
 import Semi from './pages/Semiconductors';
 import Blog from './pages/Blog';
 import Contact from './pages/Contact';
@@ -23,6 +24,7 @@ function App() {
         <Route path="/services" element={<Services />} />
          <Route path="/IT services" element={<ITServices />} />
          <Route path="/RCM services" element={<RCMServices />} />
+        <Route path="/rcm-details" element={<RCMDetails />} />
          <Route path="/IT Consulting" element={<ITConsulting />} />
          <Route path="/Semi conductors" element={<Semi />} />
         <Route path="/about" element={<About />} />

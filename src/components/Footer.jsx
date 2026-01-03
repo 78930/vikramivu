@@ -28,13 +28,13 @@ function Footer() {
         </div>
         <div className="footer-section">
           <h4>Contact Info</h4>
-          <p>Email: info@vikramiu.com</p>
+          <p>Email: info@yotira.com</p>
           <p>Phone: +91-7893030059</p>
           <p>Address: NAC BULDING 2ND FLOOR Hyderabad, India</p>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2025 YourCompany. All rights reserved.</p>
+        <p>&copy; 2026 Yotira. All rights reserved.</p>
       </div>
     </footer>
   );

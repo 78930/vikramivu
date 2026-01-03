@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "optimize:images": "npx imagemin 'public/assets/*.{jpg,png}' --out-dir=public/assets/optimized",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -22,6 +23,7 @@
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "terser": "^5.44.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "imagemin-cli": "^8.0.0"
   }
 }

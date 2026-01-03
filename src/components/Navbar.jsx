@@ -9,7 +9,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="nav-container">
         <Link to="/" className="nav-logo">
-          🚀 vikramivu
+          YOTIRA
         </Link>
         <div className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
           ☰
@@ -51,6 +51,9 @@ function Navbar() {
             </Link>
           </li>
         </ul>
+        <div className="nav-action">
+          <Link to="/contact" className="nav-btn">Talk to an Expert</Link>
+        </div>
       </div>
     </nav>
   );

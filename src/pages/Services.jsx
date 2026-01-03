@@ -1,4 +1,5 @@
 import './Services.css';
+import { Link } from 'react-router-dom';
 
 function Services() {
   const services = [
@@ -78,7 +79,11 @@ function Services() {
                 <li key={index}>✓ {feature}</li>
               ))}
             </ul>
-            <button className="service-cta">Learn More</button>
+            {service.title === 'Healthcare RCM' ? (
+              <Link to="/rcm-details" className="service-cta">Learn More</Link>
+            ) : (
+              <button className="service-cta">Learn More</button>
+            )}
           </div>
         ))}
       </div>

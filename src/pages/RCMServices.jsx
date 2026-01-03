@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import "./RCMServices.css";
 
 const rcmServicesData = [
@@ -122,6 +123,9 @@ const RCMServices = () => {
           <a href="#rcm-services" className="rcm-hero-btn">
             View Full Services
           </a>
+          <Link to="/rcm-details" className="rcm-hero-btn rcm-hero-btn--alt">
+            Learn More (Detailed)
+          </Link>
         </div>
         <div className="rcm-hero-card">
           <h2>End‑to‑End RCM Workflow</h2>
@@ -183,6 +187,9 @@ const RCMServices = () => {
                 <li key={d}>{d}</li>
               ))}
             </ul>
+            <div className="rcm-service-learnmore">
+              <Link to="/rcm-details" className="rcm-learn-more">Learn more about RCM</Link>
+            </div>
           </div>
         </div>
       </section>
@@ -231,9 +238,9 @@ const RCMServices = () => {
           Share your current challenges in billing, denials, or A/R, and get a
           customized RCM solution and transition plan.
         </p>
-        <a href="/contact" className="rcm-cta-btn">
+        <Link to="/contact" className="rcm-cta-btn">
           Talk to Our RCM Expert
-        </a>
+        </Link>
       </section>
     </div>
   );

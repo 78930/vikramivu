@@ -1,59 +1,68 @@
+// src/pages/Home.jsx
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+// video is expected at runtime as a static public asset: `frontend/public/bg.mp4`
+// Use a remote electronics-themed fallback video if the local `/bg.mp4` is missing.
+// Provided fallback (iStock Big Data video):
+// https://media.istockphoto.com/id/1309227447/video/big-data-information-flowing-through-a-computer-network.mp4
+const CDN_BG = 'https://media.istockphoto.com/id/1309227447/video/big-data-information-flowing-through-a-computer-network.mp4?s=mp4-640x640-is&k=20&c=VidCqZ3Kf2FxTXblJTJM-4hEecoM-YSYcbxlbeEHtuQ=';
+import poster from '../assets/bg-poster.svg';
+import AnimatedBackground from '../components/AnimatedBackground';
 import './Home.css';
-
+import ServicesGrid from '../components/ServicesGrid';
 
 function Home() {
+  const [videoFailed, setVideoFailed] = useState(false);
+  const [videoSrc, setVideoSrc] = useState('/bg.mp4');
+  const [triedCdn, setTriedCdn] = useState(false);
+
   return (
     <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
+      {/* Hero Section with 4D video background */}
+      <section
+        className={"hero" + (videoFailed ? ' fallback' : '')}
+        style={videoFailed ? { backgroundImage: `url(${poster})`, backgroundSize: 'cover', backgroundPosition: 'center' } : undefined}
+      >
+        {/* Animated background sits below video (or alone if video fails) */}
+        <AnimatedBackground color={0x00e0ff} bg={0x071124} />
+
+        {!videoFailed && (
+          <video
+            className="hero-video"
+            src={videoSrc}
+            autoPlay
+            muted
+            loop
+            playsInline
+            onError={() => {
+              if (!triedCdn) {
+                setVideoSrc(CDN_BG);
+                setTriedCdn(true);
+              } else {
+                setVideoFailed(true);
+              }
+            }}
+          />
+        )}
+
+        <div className="hero-overlay" />
+
         <div className="hero-content">
-          <h1>Transform Your Business with Expert Solutions</h1>
-          <p>IT Services | IT Consulting | Healthcare Solutions | Semiconductor </p>
-          <Link to="/contact" className="cta-button">
-            Get Started
-          </Link>
-          
+          <div className="hero-pretitle">From ASICs to AI Engineering</div>
+          <h1 className="hero-title">Progressive Engineering Excellence</h1>
+          <p className="hero-sub">Vikramivu is a trusted partner for product and silicon engineering — hardware, embedded software, cloud and AI solutions that accelerate product readiness.</p>
+
+          <div className="hero-ctas">
+            <Link to="/contact" className="nav-btn">Talk to an Expert</Link>
+            <Link to="/services" className="cta-button cta-ghost">Our Services →</Link>
+          </div>
         </div>
       </section>
 
       {/* Services Overview */}
       <section className="services-overview">
         <h2>Our Services</h2>
-        <div className="services-grid">
-          <div className="service-card">
-            <div className="service-icon">💼</div>
-            <h3>IT Services</h3>
-            <p>Enterprise solutions, cloud migration, and digital transformation.</p>
-            <Link to="/IT services" className="cta-button">
-             GET
-             </Link>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🏥</div>
-            <h3>Healthcare RCM</h3>
-            <p>Revenue Cycle Management and medical billing optimization.</p>
-            <Link to="/RCM Services" className="cta-button">
-             GET
-             </Link>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">🔌</div>
-            <h3>Semiconductors</h3>
-            <p>Embedded systems, IoT solutions, and hardware consulting.</p>
-            <Link to="/Semi conductors" className="cta-button">
-             GET
-             </Link>
-          </div>
-          <div className="service-card">
-            <div className="service-icon">📊</div>
-            <h3>IT Consulting</h3>
-            <p>Strategic business consulting and process optimization.</p>
-            <Link to="/IT Consulting" className="cta-button">
-             GET
-             </Link>
-          </div>
-        </div>
+        <ServicesGrid />
       </section>
 
       {/* Why Choose Us */}
@@ -79,7 +88,7 @@ function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Final CTA Section */}
       <section className="final-cta">
         <h2>Ready to Transform?</h2>
         <p>Let's discuss how we can help your business grow</p>
