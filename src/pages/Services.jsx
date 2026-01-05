@@ -79,12 +79,20 @@ function Services() {
                 <li key={index}>✓ {feature}</li>
               ))}
             </ul>
-            {service.title === 'Healthcare RCM' ? (
-              <Link to="/rcm-details" className="service-cta">Learn More</Link>
-            ) : (
-              <button className="service-cta">Learn More</button>
-            )}
-          </div>
+            {(() => {
+                    const getServiceRoute = () => {
+                      const routeMap = {
+                        'IT Services & Consulting': '/it-services',
+                        'Healthcare RCM': '/rcm-details',
+                        'Semiconductors & Embedded Systems': '/semiconductors',
+                        'Business Consulting': '/business-consulting'
+                      };
+                      return routeMap[service.title] || '/services';
+                    };
+                    return (
+                      <Link to={getServiceRoute()} className="service-cta">Learn More</Link>
+                    );
+                  })()}div>
         ))}
       </div>
 
