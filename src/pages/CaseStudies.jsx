@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import api from '../api';
 import './CaseStudies.css';
 import CaseStudiesGrid from '../components/CaseStudiesGrid';
 
@@ -14,7 +15,7 @@ function CaseStudies() {
 
   const fetchCaseStudies = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/cases');
+      const response = await api.get('/api/cases');
       setCases(response.data);
     } catch (error) {
       console.error('Error fetching case studies:', error);

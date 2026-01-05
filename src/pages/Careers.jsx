@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import api from '../api';
 import './Careers.css';
 
 function Careers() {
@@ -12,7 +13,7 @@ function Careers() {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/jobs');
+      const response = await api.get('/api/jobs');
       setJobs(response.data);
     } catch (error) {
       console.error('Error fetching jobs:', error);

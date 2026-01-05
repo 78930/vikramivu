@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './IT.css';
 
 
-const Services = () => {
+const ITServices = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedService, setSelectedService] = useState(null);
@@ -227,4 +227,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default ITServices;

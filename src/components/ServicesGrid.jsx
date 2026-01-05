@@ -2,10 +2,10 @@ import React from 'react';
 import './ServicesGrid.css';
 
 const services = [
-  { title: 'IT Services', desc: 'Enterprise solutions, cloud migration, digital transformation.', href: '/IT services' },
-  { title: 'Healthcare RCM', desc: 'Revenue Cycle Management and medical billing optimization.', href: '/RCM Services' },
-  { title: 'Semiconductors', desc: 'Embedded systems, IoT solutions, and hardware consulting.', href: '/Semi conductors' },
-  { title: 'IT Consulting', desc: 'Strategic business consulting and process optimization.', href: '/IT Consulting' }
+  { title: 'IT Services', desc: 'Enterprise solutions, cloud migration, digital transformation.', href: '/it-services' },
+  { title: 'Healthcare RCM', desc: 'Revenue Cycle Management and medical billing optimization.', href: '/rcm-services' },
+  { title: 'Semiconductors', desc: 'Embedded systems, IoT solutions, and hardware consulting.', href: '/semiconductors' },
+  { title: 'IT Consulting', desc: 'Strategic business consulting and process optimization.', href: '/it-consulting' }
 ];
 
 export default function ServicesGrid() {

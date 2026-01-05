@@ -6,7 +6,7 @@ import Services from './pages/Services';
 import About from './pages/About';
 import CaseStudies from './pages/CaseStudies';
 import ITConsulting from './pages/ITConsulting';
-import ITServices from './pages/IT services';
+import ITServices from './pages/ITServices';
 import RCMServices from './pages/RCMServices';
 import RCMDetails from './pages/RCMDetails';
 import Semi from './pages/Semiconductors';
@@ -22,11 +22,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
-         <Route path="/IT services" element={<ITServices />} />
-         <Route path="/RCM services" element={<RCMServices />} />
+        <Route path="/it-services" element={<ITServices />} />
+        <Route path="/rcm-services" element={<RCMServices />} />
         <Route path="/rcm-details" element={<RCMDetails />} />
-         <Route path="/IT Consulting" element={<ITConsulting />} />
-         <Route path="/Semi conductors" element={<Semi />} />
+        <Route path="/it-consulting" element={<ITConsulting />} />
+        <Route path="/semiconductors" element={<Semi />} />
         <Route path="/about" element={<About />} />
         <Route path="/case-studies" element={<CaseStudies />} />
         <Route path="/blog" element={<Blog />} />

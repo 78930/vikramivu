@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import api from '../api';
 import './Contact.css';
 
 function Contact() {
@@ -31,10 +32,7 @@ function Contact() {
     setError('');
 
     try {
-      const response = await axios.post(
-        'http://localhost:5000/api/contacts/send',
-        formData
-      );
+      const response = await api.post('/api/contacts/send', formData);
 
       if (response.status === 201) {
         setSubmitted(true);
