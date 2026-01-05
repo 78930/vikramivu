@@ -92,10 +92,9 @@ function Services() {
                     return (
                       <Link to={getServiceRoute()} className="service-cta">Learn More</Link>
                     );
-                  })()}div>
-        ))}
-      </div>
-
+                })()
+                ))}
+              </div>
       <section className="why-choose-section">
         <h2>Why Choose Our Services?</h2>
         <div className="reasons-grid">
