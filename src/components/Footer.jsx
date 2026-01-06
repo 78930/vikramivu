@@ -6,15 +6,15 @@ function Footer() {
       <div className="footer-container">
         <div className="footer-section">
           <h4>About Us</h4>
-          <p>Leading provider of IT Services, IT Consulting, Healthcare Solutions, and Semiconductor .</p>
+          <p>Leading provider of IT Services, IT Consulting, Healthcare RCM, and Semiconductor solutions.</p>
         </div>
         <div className="footer-section">
           <h4>Services</h4>
           <ul>
-            <li><a href="/services">IT Services</a></li>
-            <li><a href="/services">Healthcare RCM</a></li>
-            <li><a href="/services">Semiconductors</a></li>
-            <li><a href="/services">IT Consulting</a></li>
+            <li><a href="/it-services">IT Services</a></li>
+            <li><a href="/rcm-services">Healthcare RCM</a></li>
+            <li><a href="/semiconductors">Semiconductors</a></li>
+            <li><a href="/it-consulting">IT Consulting</a></li>
           </ul>
         </div>
         <div className="footer-section">
@@ -30,7 +30,7 @@ function Footer() {
           <h4>Contact Info</h4>
           <p>Email: info@yotira.com</p>
           <p>Phone: +91-7893030059</p>
-          <p>Address: NAC BULDING 2ND FLOOR Hyderabad, India</p>
+          <p>Address: NAC BUILDING 2ND FLOOR Hyderabad, India</p>
         </div>
       </div>
       <div className="footer-bottom">

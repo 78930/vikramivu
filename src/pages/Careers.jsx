@@ -6,6 +6,7 @@ import './Careers.css';
 function Careers() {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchJobs();
@@ -13,13 +14,21 @@ function Careers() {
 
   const fetchJobs = async () => {
     try {
+      setError(null);
       const response = await api.get('/api/jobs');
       setJobs(response.data);
     } catch (error) {
       console.error('Error fetching jobs:', error);
+      setError(error?.message || 'Failed to load job listings');
     } finally {
       setLoading(false);
     }
+  };
+
+  const retry = () => {
+    setLoading(true);
+    setError(null);
+    fetchJobs();
   };
 
   const mockJobs = [
@@ -91,6 +100,11 @@ function Careers() {
           <h2>Open Positions</h2>
           {loading ? (
             <p className="loading">Loading job listings...</p>
+          ) : error ? (
+            <div style={{ textAlign: 'center', padding: '24px' }}>
+              <p style={{ color: '#ff6b6b' }}>{error}</p>
+              <button onClick={retry}>Retry</button>
+            </div>
           ) : (
             <div className="jobs-list">
               {displayJobs.map(job => (

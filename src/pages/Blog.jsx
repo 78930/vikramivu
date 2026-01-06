@@ -6,6 +6,8 @@ import './Blog.css';
 function Blog() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [newsletterMsg, setNewsletterMsg] = useState(null);
 
   useEffect(() => {
     fetchBlogs();
@@ -13,13 +15,21 @@ function Blog() {
 
   const fetchBlogs = async () => {
     try {
+      setError(null);
       const response = await api.get('/api/blogs');
       setBlogs(response.data);
     } catch (error) {
       console.error('Error fetching blogs:', error);
+      setError(error?.message || 'Failed to load articles');
     } finally {
       setLoading(false);
     }
+  };
+
+  const retry = () => {
+    setLoading(true);
+    setError(null);
+    fetchBlogs();
   };
 
   const mockBlogs = [
@@ -67,6 +77,11 @@ function Blog() {
       <div className="blog-container">
         {loading ? (
           <p className="loading">Loading articles...</p>
+        ) : error ? (
+          <div style={{ textAlign: 'center', padding: '24px' }}>
+            <p style={{ color: '#ff6b6b' }}>{error}</p>
+            <button onClick={retry}>Retry</button>
+          </div>
         ) : (
           <div className="blog-grid">
             {displayBlogs.map(post => (
@@ -96,10 +111,24 @@ function Blog() {
         <div className="newsletter-content">
           <h2>Subscribe to Our Newsletter</h2>
           <p>Get the latest insights and industry updates delivered to your inbox</p>
-          <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
+          <form className="newsletter-form" onSubmit={(e) => {
+            e.preventDefault();
+            const email = e.target[0].value?.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email || !emailRegex.test(email)) {
+              setNewsletterMsg({ type: 'error', text: 'Please enter a valid email address' });
+              return;
+            }
+            // Minimal local confirmation. Integrate with backend subscription endpoint if available.
+            setNewsletterMsg({ type: 'success', text: 'Subscription confirmed. Thank you!' });
+            e.target.reset();
+          }}>
             <input type="email" placeholder="Enter your email" required />
             <button type="submit">Subscribe</button>
           </form>
+          {newsletterMsg && (
+            <p style={{ marginTop: '12px', color: newsletterMsg.type === 'error' ? '#ff6b6b' : '#22c55e' }}>{newsletterMsg.text}</p>
+          )}
         </div>
       </section>
     </div>

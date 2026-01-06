@@ -7,6 +7,7 @@ import CaseStudiesGrid from '../components/CaseStudiesGrid';
 function CaseStudies() {
   const [cases, setCases] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [filter, setFilter] = useState('All');
 
   useEffect(() => {
@@ -15,13 +16,21 @@ function CaseStudies() {
 
   const fetchCaseStudies = async () => {
     try {
+      setError(null);
       const response = await api.get('/api/cases');
       setCases(response.data);
     } catch (error) {
       console.error('Error fetching case studies:', error);
+      setError(error?.message || 'Failed to load case studies');
     } finally {
       setLoading(false);
     }
+  };
+
+  const retry = () => {
+    setLoading(true);
+    setError(null);
+    fetchCaseStudies();
   };
 
   const mockCases = [
@@ -111,7 +120,13 @@ function CaseStudies() {
 
         {loading ? (
           <p className="loading">Loading case studies...</p>
+        ) : error ? (
+          <div style={{ textAlign: 'center', padding: '24px' }}>
+            <p style={{ color: '#ff6b6b' }}>{error}</p>
+            <button onClick={retry}>Retry</button>
+          </div>
         ) : (
+          // render grid (uses internal mock cards)
           <CaseStudiesGrid />
         )}
       </div>

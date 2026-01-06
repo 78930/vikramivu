@@ -48,7 +48,7 @@ function Home() {
         <div className="hero-overlay" />
 
         <div className="hero-content">
-          <div className="hero-pretitle">From TOIL to FIASCO</div>
+          <div className="hero-pretitle">From Problems to Solutions</div>
           <h1 className="hero-title">Progressive Engineering Excellence</h1>
           <p className="hero-sub">YOTIRA is a trusted partner for product and silicon engineering — hardware, embedded software, cloud and AI solutions that accelerate product readiness.</p>
 
